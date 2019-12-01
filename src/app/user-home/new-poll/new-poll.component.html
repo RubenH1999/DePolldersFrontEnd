@@ -1,0 +1,29 @@
+<h1 mat-dialog-title>New Poll</h1>
+<div mat-dialog-content>
+<p>{{ model | json }}</p> 
+ 
+<form (ngSubmit)="onSubmit()" >
+    
+        Naam: 
+        <input type="text" [(ngModel)] = "model.naam" name="naam" />
+    
+    <p>
+        Antwoord: 
+        <input type="text"  [(ngModel)] = "text" name="text" />
+        <button (click)="addAnswer(text)" type="button" class="btn-small green">add Answer</button>
+    </p>
+
+    <ul>
+        <li  *ngFor="let f of (friends| async)">
+                {{f.user.userName}} <button type="button" class="btn-small green" (click)="inviteFriend(f.user.userID)">Invite</button>
+        </li>
+    </ul>
+    <ul>
+            <li  *ngFor="let f of (sentFriends| async)">
+                    <div *ngIf="f.user.userID != userID">{{f.user.userName}} <button type="button" class="btn-small green" (click)="inviteFriend(f.user.userID)">Invite</button></div></li>
+        </ul>
+    <div class="form-field center-align">
+    <button type="submit" class="btn-small green ">Submit</button>
+    </div>
+</form>
+</div>

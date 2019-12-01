@@ -1,0 +1,87 @@
+<body>
+    
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="card pad">
+                <div class="card action green white-text center-align mar">
+                    <h3>Polls</h3>
+                </div>
+                <div class="card-content">
+
+                    <ul>
+                            
+                        <li  *ngFor="let p of (polls| async)">
+                            {{p.poll.naam}}
+                            <button (click)="openVote(p)" class="btn-small green">Vote</button>
+                            
+                            </li>
+                    </ul>
+                </div>
+                <div class="form-field center-align ">
+                    <a class="btn-floating btn-medium waves-effect  waves-light green "  (click)="openDialog()"><i
+                            class="material-icons">add</i></a>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+            <div class="card pad">
+                    <div class="card action green white-text center-align mar">
+                            <h3>Add friends</h3>
+                        </div>
+                        <div class="card-content">
+                            <div class="form-field">
+                                    <form (ngSubmit)="onSearch()">
+                                            
+                                                <label for="searchUser">Lookup friend by email</label>
+                                                <input type="text" [(ngModel)]="searchUser" name="searchUser" />
+                                            
+                                    
+                                            <button class="btn-small green" type="submit"><i class="material-icons">search</i></button>
+                                        </form>
+                                        
+                            </div>
+                            <div class="form-field">
+                                <h4 class="center-align">Friend Requests</h4>
+                                <ul>
+                                        <li *ngFor="let f of (receivedRequests| async)">{{f.user.userName}} <button class="btn-small green"
+                                                (click)="acceptInvite(f.friendshipID,f)">Accept</button> <button class="btn-small red"
+                                                (click)="declineInvite(f.friendshipID)">Decline</button></li>
+                                    </ul>
+                            </div>
+                        </div>
+            </div>
+        </div>
+        <div class="col s12 m4">
+                <div class="card pad">
+                        <div class="card action green white-text center-align mar">
+                                <h3>Poll results</h3>
+                            </div>
+                            <div class="card-content">
+                                    <div class="form-field">
+                                <ul>
+                            
+                        <li  *ngFor="let p of (polls| async)">
+                            {{p.poll.naam}}
+                            <ul>
+                                <li *ngFor="let v of p.poll.answers">
+                                       <p> - {{v.text}} {{v.votes.length}} </p>
+                                </li>
+                            </ul>
+                            
+                            </li>
+                    </ul>
+                            </div>
+                            </div>
+                </div>
+            </div>
+       </div> 
+       <div class="row bottom">
+       <footer class="col s1" >
+           <button class="btn-large red" type="button" routerLink="/login" (click)="logout()">Logout</button>
+       </footer>
+    </div>
+</body>
+
+    
+
+    

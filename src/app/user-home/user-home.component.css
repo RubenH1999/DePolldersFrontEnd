@@ -1,0 +1,21 @@
+.btn-small{
+    height: 24px;
+    line-height: 24px;
+    padding: 0 0 5.rem;
+}
+body{
+    background-image: url(../images/polders.jpeg);
+    background-size: cover;
+    
+}
+.pad{
+    padding-bottom: 15px;
+    
+}
+.mar{
+    margin-bottom: -30px;
+}
+.bottom{
+    position: fixed;
+    bottom: 0;
+}

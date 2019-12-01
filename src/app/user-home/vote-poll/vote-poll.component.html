@@ -1,0 +1,5 @@
+<h4>{{data.poll.poll.naam}}</h4>
+
+<ul>
+        <li *ngFor="let a of  data.poll.poll.answers" ([ngModel])="tussenstand">{{a.text}}  {{a.count}}<button class="btn-small green" (click)="castVote(a.answerID, data.poll.userID)" type="button" >Vote</button> </li>
+</ul>
